@@ -1,6 +1,27 @@
-var nextEl = document.querySelector("#next");
-var questions = document.querySelectorAll(".question");
+var questions = document.querySelectorAll(".que");
+var endGame = document.querySelector(".endGame");
+var timer = document.querySelector(".timer");
+var start = document.querySelector(".start");
+var score = document.querySelector(".score");
 var cursor = 0;
+var secondsLeft = 60;
+var numberOfCorrect = 0;
+var initials = "";
+
+function displayTimer() {
+	timer.textContent = "This much time left!!------->" + secondsLeft;
+}
+
+var answers = ["a", "c", "d", "b", "a"];
+
+var hideStart = function(){
+    if(start.CDATA_SECTION_NODE.index != cursor){
+        start.getElementsByClassName.display = "none";
+    } else{
+        start.getElementsByClassName.display = "flex";
+    }
+};
+
 
 var displayQuestion = function () {
     for (var question of questions) {
