@@ -21,7 +21,17 @@ var hideStart = function(){
         start.getElementsByClassName.display = "flex";
     }
 };
-
+var displayNextQuestion = function () {
+	for (var question of questions) {
+		console.log(question);
+		if (question.dataset.index != cursor) {
+			question.style.display = "none";
+		}
+		else {
+			question.style.display = "block";
+		}
+    }
+};
 
 var displayQuestion = function () {
     for (var question of questions) {
@@ -36,3 +46,6 @@ var advance = function() {
 };
 displayQuestion();
 nextEl.addEventListener("click", advance);
+
+hideStart();
+displayNextQuestion();
