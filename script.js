@@ -15,7 +15,7 @@ function displayTimer() {
 var answers = ["a", "c", "d", "b", "a"];
 
 var hideStart = function(){
-    if(start.CDATA_SECTION_NODE.index != cursor){
+    if(start.dataset.index != cursor){
         start.getElementsByClassName.display = "none";
     } else{
         start.getElementsByClassName.display = "flex";
@@ -23,23 +23,17 @@ var hideStart = function(){
 };
 var displayNextQuestion = function () {
 	for (var question of questions) {
-		console.log(question);
-		if (question.dataset.index != cursor) {
-			question.style.display = "none";
+		if (que.dataset.index != cursor) {
+			que.style.display = "none";
 		}
 		else {
-			question.style.display = "block";
+			ques.style.display = "block";
 		}
     }
 };
 
-var displayQuestion = function () {
-    for (var question of questions) {
-        console.log(question);
-    }
-};
 var advance = function() {
-    if (cursor < questions.length - 1){
+    if (cursor < ques.length - 1){
         cursor++;
         displayQuestion();
     }
