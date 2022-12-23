@@ -78,8 +78,31 @@ var advance = function (event) {
     if (element.matches(".start button")) {
         checkAnswer(element);
         cursor++;
+        startTimer();
+        hideStart();
+    }
+    if (element.matches(".que button")) {
+        checkAnswer(element)
+        cursor++;
     }
 
     displayNextQuestion();
     displayGameOver();
 };
+ 
+var checkAnswer = function () {
+    var userSelected = element.value;
+    var correct = answers[cursor - 1];
+    if (userSelected != correct) {
+        secondsLeft = secondsLeft - 5;
+    } else {
+        numberOfCorrect++;
+    }
+}
+
+document.addEventListener('click', advance);
+
+hideStart();
+displayNextQuestion();
+displayGameOver();
+displayTimer();
