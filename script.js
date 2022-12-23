@@ -37,16 +37,39 @@ var displayGameOver = function () {
         endGame.style.display = "none";
     } else {
         endGame.style.display = "block";
+        var initials = prompt("Type Initials");
+        saveScore(initials);
     }
 }
+
+var saveScore = function (initials) {
+    var userScore = {
+        userInitials: initials,
+        score: numberOfCorrect,
+    };
+    localStorage.setItem("score", JSON.stringify(userScore));
+}
+
+var displayStored = function() {
+    var storedUser = localStorage.getItem("score");
+    var userObj = JSON.parse(storedUser);
+    score.textContent = "User = " + userObj.userInitials + " | Score = " + userObj.score;
+}
+
+
+
+
+
+
+displayQuestion();
+nextEl.addEventListener("click", advance);
+
+hideStart();
+displayNextQuestion();
+
 var advance = function() {
     if (cursor < ques.length - 1){
         cursor++;
         displayQuestion();
     }
 };
-displayQuestion();
-nextEl.addEventListener("click", advance);
-
-hideStart();
-displayNextQuestion();
