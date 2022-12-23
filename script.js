@@ -73,9 +73,13 @@ var decrementTime = function () {
     displayTimer();
 }
 
-var advance = function() {
-    if (cursor < ques.length - 1){
+var advance = function (event) {
+    var element = event.target;
+    if (element.matches(".start button")) {
+        checkAnswer(element);
         cursor++;
-        displayQuestion();
     }
+
+    displayNextQuestion();
+    displayGameOver();
 };
