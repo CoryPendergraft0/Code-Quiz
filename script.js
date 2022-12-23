@@ -12,26 +12,33 @@ function displayTimer() {
 	timer.textContent = "This much time left!!------->" + secondsLeft;
 }
 
-var answers = ["a", "c", "d", "b", "a"];
+var answers = ["a", "c", "d", "b", "a", "d"];
 
 var hideStart = function(){
     if(start.dataset.index != cursor){
-        start.getElementsByClassName.display = "none";
+        start.style.display = "none";
     } else{
-        start.getElementsByClassName.display = "flex";
+        start.start.display = "flex";
     }
 };
 var displayNextQuestion = function () {
 	for (var question of questions) {
-		if (que.dataset.index != cursor) {
-			que.style.display = "none";
+		if (question.dataset.index != cursor) {
+			question.style.display = "none";
 		}
 		else {
-			ques.style.display = "block";
+			question.style.display = "block";
 		}
     }
 };
 
+var displayGameOver = function () {
+    if (endGame.dataset.index != cursor) {
+        endGame.style.display = "none";
+    } else {
+        endGame.style.display = "block";
+    }
+}
 var advance = function() {
     if (cursor < ques.length - 1){
         cursor++;
