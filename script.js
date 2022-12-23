@@ -56,16 +56,22 @@ var displayStored = function() {
     score.textContent = "User = " + userObj.userInitials + " | Score = " + userObj.score;
 }
 
-
-
-
-
-
-displayQuestion();
-nextEl.addEventListener("click", advance);
-
-hideStart();
-displayNextQuestion();
+var  test;
+var startTimer = function () {
+    test = setInterval(decrementTime, 1000);
+}
+var decrementTime = function () {
+    secondsLeft--;
+    if (secondsLet === 0) {
+        clearInterval(test);
+        cursor = 7;
+        displayNextQuestion();
+        if(endGame.style.display != "block") {
+            displayGameOver();
+        }
+    }
+    displayTimer();
+}
 
 var advance = function() {
     if (cursor < ques.length - 1){
