@@ -15,10 +15,10 @@ function displayTimer() {
 var answers = ["a", "c", "d", "b", "a", "d"];
 
 var hideStart = function(){
-    if(start.dataset.index != cursor){
+    if (start.dataset.index != cursor){
         start.style.display = "none";
     } else{
-        start.start.display = "flex";
+        start.style.display = "flex";
     }
 };
 var displayNextQuestion = function () {
@@ -56,13 +56,13 @@ var displayStored = function() {
     score.textContent = "User = " + userObj.userInitials + " | Score = " + userObj.score;
 }
 
-var  test;
+var test;
 var startTimer = function () {
     test = setInterval(decrementTime, 1000);
 }
 var decrementTime = function () {
     secondsLeft--;
-    if (secondsLet === 0) {
+    if (secondsLeft === 0) {
         clearInterval(test);
         cursor = 7;
         displayNextQuestion();
@@ -76,20 +76,19 @@ var decrementTime = function () {
 var advance = function (event) {
     var element = event.target;
     if (element.matches(".start button")) {
-        checkAnswer(element);
         cursor++;
         startTimer();
         hideStart();
     }
     if (element.matches(".que button")) {
-        checkAnswer(element)
+        checkAnswer(element);
         cursor++;
     }
-
+    
     displayNextQuestion();
     displayGameOver();
 };
- 
+
 var checkAnswer = function () {
     var userSelected = element.value;
     var correct = answers[cursor - 1];
